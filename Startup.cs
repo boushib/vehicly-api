@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using vehiclesStoreAPI.Repositories;
+using vehiclesStoreAPI.DAO;
+using Microsoft.EntityFrameworkCore;
 
 namespace vehiclesStoreAPI
 {
@@ -27,8 +29,9 @@ namespace vehiclesStoreAPI
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-
+      services.AddDbContext<VehiclesContext>(options => options.UseNpgsql(Configuration["PostgresConnectionString"]));
       services.AddControllers();
+      //var builder = new SqlConnectionStringBuilder();
       // dependency injection
       services.AddScoped<IVehicleRepository, VehicleRepository>();
       services.AddSwaggerGen(c =>
