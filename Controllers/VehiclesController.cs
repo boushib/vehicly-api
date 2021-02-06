@@ -10,7 +10,14 @@ namespace vehiclesStoreAPI.Controllers
   [ApiController] // class decorator
   public class VehiclesController : ControllerBase
   {
-    private VehicleRepository _repository = new VehicleRepository();
+    private readonly IVehicleRepository _repository;
+
+    // use stor shortcut to create a constructor.
+    public VehiclesController(IVehicleRepository repository)
+    {
+      _repository = repository;
+    }
+    //private VehicleRepository _repository = new VehicleRepository();
 
     [HttpGet]
     public ActionResult<IEnumerable<Vehicle>> GetVehicles()
