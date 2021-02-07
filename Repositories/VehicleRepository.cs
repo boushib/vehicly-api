@@ -1,22 +1,27 @@
 using System.Collections.Generic;
 using vehiclesStoreAPI.Models;
+using vehiclesStoreAPI.DAO;
+using System.Linq;
 
 namespace vehiclesStoreAPI.Repositories
 {
   public class VehicleRepository : IVehicleRepository
   {
+    private readonly VehiclesContext _context;
+
+    public VehicleRepository(VehiclesContext context)
+    {
+      _context = context;
+    }
+
     public Vehicle GetVehicleById(string id)
     {
-      return new Vehicle { Id = "c-1", Make = "Audi", Model = "Q5", Fuel = "Gasoil", Year = 2017, Price = 240000 };
+      return _context.Vehicles.FirstOrDefault(vehicle => vehicle.Id == id);
     }
 
     public IEnumerable<Vehicle> GetVehicles()
     {
-      return new List<Vehicle>{
-        new Vehicle { Id = "c-1", Make = "Audi", Model = "Q5", Fuel = "Gasoil", Year = 2017, Price = 240000 },
-        new Vehicle { Id = "c-2", Make = "Audi", Model = "Q6", Fuel = "Gasoil", Year = 2018, Price = 290000 },
-        new Vehicle { Id = "c-3", Make = "Audi", Model = "Q7", Fuel = "Gasoil", Year = 2019, Price = 340000 },
-      };
+      return _context.Vehicles.ToList();
     }
   }
 }
