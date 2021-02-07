@@ -31,7 +31,7 @@ namespace vehiclesStoreAPI
     {
       services.AddDbContext<VehiclesContext>(options => options.UseNpgsql(Configuration["PostgresConnectionString"]));
       services.AddControllers();
-      //var builder = new SqlConnectionStringBuilder();
+      services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
       // dependency injection
       services.AddScoped<IVehicleRepository, VehicleRepository>();
       services.AddSwaggerGen(c =>
