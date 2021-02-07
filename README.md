@@ -9,6 +9,13 @@ A vehicles online store backend API project, built using .NET core for the `web 
 - **Database Engine**: PostgreSQL.
 - **Cloud Provider**: Microsoft Azure
 
+## Tools used during development
+
+- VSCode.
+- Postman.
+- pgAdmin
+- Azure AD
+
 ## Run dev environment
 
 will be added soon.
