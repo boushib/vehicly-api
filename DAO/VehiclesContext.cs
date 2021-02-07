@@ -13,5 +13,10 @@ namespace vehiclesStoreAPI.DAO
 
     // create a representation of the Vehicles model in our db
     public DbSet<Vehicle> Vehicles { get; set; }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder.HasPostgresExtension("uuid-ossp");
+      base.OnModelCreating(modelBuilder);
+    }
   }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace vehiclesStoreAPI.Models
@@ -6,8 +7,11 @@ namespace vehiclesStoreAPI.Models
   {
     // use prop shortcut to create a new property
     [Key]
-    public string Id { get; set; }
+    public Guid Id { get; set; }
     [Required]
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? UpdatedAt { get; set; }
     public string Make { get; set; }
     [Required]
     public string Model { get; set; }

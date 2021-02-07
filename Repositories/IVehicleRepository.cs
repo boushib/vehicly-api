@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using vehiclesStoreAPI.Models;
 
@@ -7,6 +8,8 @@ namespace vehiclesStoreAPI.Repositories
   public interface IVehicleRepository
   {
     IEnumerable<Vehicle> GetVehicles();
-    Vehicle GetVehicleById(string id);
+    Vehicle GetVehicleById(Guid id);
+    void AddVehicle(Vehicle vehicle);
+    bool SaveChanges();
   }
 }

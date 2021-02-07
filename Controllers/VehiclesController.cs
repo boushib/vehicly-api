@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -29,10 +30,19 @@ namespace vehiclesStoreAPI.Controllers
     }
 
     [HttpGet("{id}")]
-    public ActionResult<VehicleDTO> GetVehicleById(string id)
+    public ActionResult<VehicleDTO> GetVehicleById(Guid id)
     {
       var vehicle = _repository.GetVehicleById(id);
       return vehicle == null ? NotFound() : Ok(_mapper.Map<VehicleDTO>(vehicle));
+    }
+
+    [HttpPost]
+    public ActionResult<VehicleDTO> AddVehicle(Vehicle vehicle)
+    {
+      _repository.AddVehicle(vehicle);
+      _repository.SaveChanges();
+      // TODO: return a 201 status code instead of 200
+      return Ok(_mapper.Map<VehicleDTO>(vehicle));
     }
   }
 }
