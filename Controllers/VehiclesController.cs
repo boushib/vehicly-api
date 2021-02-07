@@ -27,7 +27,8 @@ namespace vehiclesStoreAPI.Controllers
     [HttpGet("{id}")]
     public ActionResult<Vehicle> GetVehicleById(string id)
     {
-      return Ok(_repository.GetVehicleById(id));
+      var vehicle = _repository.GetVehicleById(id);
+      return vehicle == null ? NotFound() : Ok(vehicle);
     }
   }
 }
