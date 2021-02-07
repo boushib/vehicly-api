@@ -17,7 +17,6 @@ namespace vehiclesStoreAPI.Controllers
     {
       _repository = repository;
     }
-    //private VehicleRepository _repository = new VehicleRepository();
 
     [HttpGet]
     public ActionResult<IEnumerable<Vehicle>> GetVehicles()
