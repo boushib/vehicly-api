@@ -15,6 +15,7 @@ A vehicles online store backend API project, built using .NET core for the `web 
 - Postman.
 - pgAdmin
 - Azure AD
+- Docker
 
 ## Run dev environment
 
