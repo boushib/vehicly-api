@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using vehiclesStoreAPI.DTO;
 using vehiclesStoreAPI.Models;
@@ -37,6 +38,7 @@ namespace vehiclesStoreAPI.Controllers
     }
 
     [HttpPost]
+    [Authorize]
     public ActionResult<VehicleDTO> AddVehicle(Vehicle vehicle)
     {
       _repository.AddVehicle(vehicle);
