@@ -7,14 +7,12 @@ A vehicles online store backend API project, built using .NET core for the `web 
 - **Frontend**: React.js, TypeScript & Redux.
 - **Backend**: Rest API in C# (.NET core).
 - **Database Engine**: PostgreSQL.
-- **Cloud Provider**: Microsoft Azure
 
 ## Tools used during development
 
 - VSCode.
 - Postman.
 - pgAdmin
-- Azure AD
 - Docker
 
 ## Run dev environment
