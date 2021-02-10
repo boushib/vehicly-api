@@ -3,16 +3,14 @@ using vehiclesStoreAPI.Models;
 
 namespace vehiclesStoreAPI.DAO
 {
-  public class VehiclesContext : DbContext
+  public class UsersContext : DbContext
   {
-    // base() calls the DbContext constructor
-    public VehiclesContext(DbContextOptions<VehiclesContext> options) : base(options)
+    public UsersContext(DbContextOptions<UsersContext> options) : base(options)
     {
       //
     }
 
-    // create a representation of the Vehicles model in our db
-    public DbSet<Vehicle> Vehicles { get; set; }
+    public DbSet<User> Users { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       modelBuilder.HasPostgresExtension("uuid-ossp");

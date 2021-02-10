@@ -1,18 +1,21 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
+using vehiclesStoreAPI.DAO;
 
 namespace vehiclesStoreAPI.Repositories
 {
-  public class UserRepository : IUserRepository
+  public class UsersRepository : IUsersRepository
   {
-    private readonly ILogger<UserRepository> _logger;
+    private readonly ILogger<UsersRepository> _logger;
+    private readonly UsersContext _context;
     private readonly IDictionary<string, string> _users = new Dictionary<string, string>{
       {"admin", "123456"},
       {"el", "123456"},
     };
 
-    public UserRepository(ILogger<UserRepository> logger)
+    public UsersRepository(UsersContext context, ILogger<UsersRepository> logger)
     {
+      _context = context;
       _logger = logger;
     }
 

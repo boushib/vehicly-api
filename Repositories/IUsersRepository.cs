@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace vehiclesStoreAPI.Repositories
 
 {
-  public interface IUserRepository
+  public interface IUsersRepository
   {
     bool IsAnExistingUser(string username);
     bool AreValidUserCredentials(string username, string password);

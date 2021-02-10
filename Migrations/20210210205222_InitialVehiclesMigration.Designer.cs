@@ -10,8 +10,8 @@ using vehiclesStoreAPI.DAO;
 namespace vehiclesStoreAPI.Migrations
 {
     [DbContext(typeof(VehiclesContext))]
-    [Migration("20210207142026_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20210210205222_InitialVehiclesMigration")]
+    partial class InitialVehiclesMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

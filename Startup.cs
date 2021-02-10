@@ -40,9 +40,11 @@ namespace vehiclesStoreAPI
       //   });
       // Read settings
       var jwtConfig = Configuration.GetSection("JWTConfig").Get<JWTConfig>();
+      var connectionString = Configuration["PostgresConnectionString"];
       // Register jwt as Singleton in Dependency Injection (DI) container 
       services.AddSingleton(jwtConfig);
-      services.AddDbContext<VehiclesContext>(options => options.UseNpgsql(Configuration["PostgresConnectionString"]));
+      services.AddDbContext<VehiclesContext>(options => options.UseNpgsql(connectionString));
+      services.AddDbContext<UsersContext>(options => options.UseNpgsql(connectionString));
       services.AddControllers();
       services.AddAuthentication(options =>
       {
@@ -75,9 +77,9 @@ namespace vehiclesStoreAPI
       services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
       // Dependency Injection
       services.AddScoped<IVehicleRepository, VehicleRepository>();
+      services.AddScoped<IUsersRepository, UsersRepository>();
       services.AddScoped<IJWTAuthRepository, JWTAuthRepository>();
       //services.AddHostedService<JwtRefreshTokenCache>();
-      services.AddScoped<IUserRepository, UserRepository>();
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "vehiclesStoreAPI", Version = "v1" });

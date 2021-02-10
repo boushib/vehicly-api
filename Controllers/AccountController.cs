@@ -16,10 +16,10 @@ namespace vehiclesStoreAPI.Controllers
   public class AccountController : ControllerBase
   {
     private readonly ILogger<AccountController> _logger;
-    private readonly IUserRepository _userService;
+    private readonly IUsersRepository _userService;
     private IJWTAuthRepository _jwtAuthManager;
 
-    public AccountController(ILogger<AccountController> logger, IUserRepository userService, IJWTAuthRepository jwtAuthManager)
+    public AccountController(ILogger<AccountController> logger, IUsersRepository userService, IJWTAuthRepository jwtAuthManager)
     {
       _logger = logger;
       _userService = userService;
