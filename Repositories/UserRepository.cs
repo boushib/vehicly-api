@@ -26,11 +26,11 @@ namespace vehiclesStoreAPI.Repositories
       return _users.TryGetValue(username, out var p) && p == password;
     }
 
-    public string GetUserRole(string username)
+    public List<string> GetUserRole(string username)
     {
-      if (!IsAnExistingUser(username)) return "";
-      if (username == "admin") return UserRoles.Admin;
-      return UserRoles.BasicUser;
+      var roles = new List<string>() { UserRole.USER };
+      if (username == "admin") roles.Add(UserRole.ADMIN);
+      return roles;
     }
 
     public bool IsAnExistingUser(string username)
@@ -39,9 +39,9 @@ namespace vehiclesStoreAPI.Repositories
     }
   }
 
-  public static class UserRoles
+  public static class UserRole
   {
-    public const string Admin = nameof(Admin);
-    public const string BasicUser = nameof(BasicUser);
+    public const string USER = "user";
+    public const string ADMIN = "admin";
   }
 }

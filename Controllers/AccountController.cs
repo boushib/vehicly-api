@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 using System.Security.Claims;
 using System;
 using vehiclesStoreAPI.Repositories;
+using System.Collections.Generic;
 
 namespace vehiclesStoreAPI.Controllers
 {
@@ -46,7 +47,7 @@ namespace vehiclesStoreAPI.Controllers
 
       var claims = new[]{
         new Claim(ClaimTypes.Name, request.Username),
-        new Claim(ClaimTypes.Role, role),
+        new Claim(ClaimTypes.Role, role[0]),
       };
 
       var jwt = _jwtAuthManager.GenerateTokens(username, claims, DateTime.Now);
@@ -88,7 +89,7 @@ namespace vehiclesStoreAPI.Controllers
       [JsonPropertyName("username")]
       public string Username { get; set; }
       [JsonPropertyName("role")]
-      public string Role { get; set; }
+      public List<string> Role { get; set; }
       [JsonPropertyName("accessToken")]
       public string AccessToken { get; set; }
       [JsonPropertyName("refreshToken")]
