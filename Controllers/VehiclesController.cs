@@ -38,7 +38,7 @@ namespace vehiclesStoreAPI.Controllers
     }
 
     [HttpPost]
-    [Authorize]
+    //[Authorize]
     public ActionResult<VehicleDTO> AddVehicle(Vehicle vehicle)
     {
       _repository.AddVehicle(vehicle);

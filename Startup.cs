@@ -30,12 +30,12 @@ namespace vehiclesStoreAPI
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        .AddJwtBearer(options =>
-        {
-          options.Audience = Configuration["AzureAD:ResourceId"];
-          options.Authority = $"{Configuration["AzureAD:InstanceId"]}{Configuration["AzureAD:TenantId"]}";
-        });
+      // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+      //   .AddJwtBearer(options =>
+      //   {
+      //     options.Audience = Configuration["AzureAD:ResourceId"];
+      //     options.Authority = $"{Configuration["AzureAD:InstanceId"]}{Configuration["AzureAD:TenantId"]}";
+      //   });
       services.AddDbContext<VehiclesContext>(options => options.UseNpgsql(Configuration["PostgresConnectionString"]));
       services.AddControllers();
       services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -62,7 +62,7 @@ namespace vehiclesStoreAPI
       }
 
       app.UseRouting();
-      app.UseAuthentication();
+      //app.UseAuthentication();
       app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
