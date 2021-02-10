@@ -14,11 +14,11 @@ namespace vehiclesStoreAPI.Controllers
   [ApiController] // class decorator
   public class VehiclesController : ControllerBase
   {
-    private readonly IVehicleRepository _repository;
+    private readonly IVehiclesRepository _repository;
     private readonly IMapper _mapper;
 
     // use stor shortcut to create a constructor.
-    public VehiclesController(IVehicleRepository repository, IMapper mapper)
+    public VehiclesController(IVehiclesRepository repository, IMapper mapper)
     {
       _repository = repository;
       _mapper = mapper;

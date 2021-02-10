@@ -5,7 +5,7 @@ using vehiclesStoreAPI.Models;
 namespace vehiclesStoreAPI.Repositories
 {
   // use in shortcut to create interface
-  public interface IVehicleRepository
+  public interface IVehiclesRepository
   {
     IEnumerable<Vehicle> GetVehicles();
     Vehicle GetVehicleById(Guid id);

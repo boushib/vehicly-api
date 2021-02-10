@@ -6,11 +6,11 @@ using System;
 
 namespace vehiclesStoreAPI.Repositories
 {
-  public class VehicleRepository : IVehicleRepository
+  public class VehiclesRepository : IVehiclesRepository
   {
     private readonly VehiclesContext _context;
 
-    public VehicleRepository(VehiclesContext context)
+    public VehiclesRepository(VehiclesContext context)
     {
       _context = context;
     }

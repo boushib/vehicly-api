@@ -32,13 +32,6 @@ namespace vehiclesStoreAPI
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-      //   .AddJwtBearer(options =>
-      //   {
-      //     options.Audience = Configuration["AzureAD:ResourceId"];
-      //     options.Authority = $"{Configuration["AzureAD:InstanceId"]}{Configuration["AzureAD:TenantId"]}";
-      //   });
-      // Read settings
       var jwtConfig = Configuration.GetSection("JWTConfig").Get<JWTConfig>();
       var connectionString = Configuration["PostgresConnectionString"];
       // Register jwt as Singleton in Dependency Injection (DI) container 
@@ -76,7 +69,7 @@ namespace vehiclesStoreAPI
         });
       services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
       // Dependency Injection
-      services.AddScoped<IVehicleRepository, VehicleRepository>();
+      services.AddScoped<IVehiclesRepository, VehiclesRepository>();
       services.AddScoped<IUsersRepository, UsersRepository>();
       services.AddScoped<IJWTAuthRepository, JWTAuthRepository>();
       //services.AddHostedService<JwtRefreshTokenCache>();

@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using vehiclesStoreAPI.DAO;
+using vehiclesStoreAPI.DTO;
+using vehiclesStoreAPI.Models;
 
 namespace vehiclesStoreAPI.Repositories
 {
@@ -17,6 +20,12 @@ namespace vehiclesStoreAPI.Repositories
     {
       _context = context;
       _logger = logger;
+    }
+
+    public void Signup(User user)
+    {
+      if (user == null) throw new ArgumentNullException(nameof(user));
+      _context.Users.Add(user);
     }
 
     public bool AreValidUserCredentials(string username, string password)
@@ -39,6 +48,11 @@ namespace vehiclesStoreAPI.Repositories
     public bool IsAnExistingUser(string username)
     {
       return _users.ContainsKey(username);
+    }
+
+    public bool SaveChanges()
+    {
+      return _context.SaveChanges() >= 0;
     }
   }
 
