@@ -12,6 +12,6 @@ namespace vehiclesStoreAPI.DTO
     [JsonPropertyName("username")]
     public string Username { get; set; }
     [JsonPropertyName("roles")]
-    public List<string> Roles { get; set; };
+    public List<string> Roles { get; set; }
   }
 }
