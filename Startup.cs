@@ -15,6 +15,8 @@ using vehiclesStoreAPI.Repositories;
 using vehiclesStoreAPI.DAO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace vehiclesStoreAPI
 {
@@ -36,11 +38,46 @@ namespace vehiclesStoreAPI
       //     options.Audience = Configuration["AzureAD:ResourceId"];
       //     options.Authority = $"{Configuration["AzureAD:InstanceId"]}{Configuration["AzureAD:TenantId"]}";
       //   });
+      // Read settings
+      var jwtConfig = Configuration.GetSection("JWTConfig").Get<JWTConfig>();
+      // Register jwt as Singleton in Dependency Injection (DI) container 
+      services.AddSingleton(jwtConfig);
       services.AddDbContext<VehiclesContext>(options => options.UseNpgsql(Configuration["PostgresConnectionString"]));
       services.AddControllers();
+      services.AddAuthentication(options =>
+      {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+      })
+        .AddJwtBearer(options =>
+        {
+          options.RequireHttpsMetadata = true;
+          // Save JWT access token in the current HttpContext, 
+          // so that we can retrieve it using the method 
+          // await HttpContext.GetTokenAsync(“Bearer”, “access_token”) or something similar.
+          // If we want to set the SaveToken to be false, then we can save the JWT access token in claims, 
+          // and then retrieve its value using the method: User.FindFirst("access_token")?.Value.
+          options.SaveToken = true;
+          options.TokenValidationParameters = new TokenValidationParameters
+          {
+            ValidateIssuer = true,
+            ValidIssuer = jwtConfig.Issuer,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtConfig.Secret)),
+            ValidAudience = jwtConfig.Audience,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            // I set ClockSkew value to be 1min
+            // to give an allowance time for the token expiration validation.
+            ClockSkew = TimeSpan.FromMinutes(1),
+          };
+        });
       services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-      // dependency injection
+      // Dependency Injection
       services.AddScoped<IVehicleRepository, VehicleRepository>();
+      services.AddScoped<IJWTAuthRepository, JWTAuthRepository>();
+      //services.AddHostedService<JwtRefreshTokenCache>();
+      services.AddScoped<IUserRepository, UserRepository>();
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "vehiclesStoreAPI", Version = "v1" });
@@ -62,7 +99,7 @@ namespace vehiclesStoreAPI
       }
 
       app.UseRouting();
-      //app.UseAuthentication();
+      app.UseAuthentication();
       app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
