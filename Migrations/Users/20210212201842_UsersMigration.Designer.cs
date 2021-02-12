@@ -11,8 +11,8 @@ using vehiclesStoreAPI.DAO;
 namespace vehiclesStoreAPI.Migrations.Users
 {
     [DbContext(typeof(UsersContext))]
-    [Migration("20210210205241_InitialUsersMigration")]
-    partial class InitialUsersMigration
+    [Migration("20210212201842_UsersMigration")]
+    partial class UsersMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace vehiclesStoreAPI.Migrations.Users
 {
-    public partial class InitialUsersMigration : Migration
+    public partial class UsersMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

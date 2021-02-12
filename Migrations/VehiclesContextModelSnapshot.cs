@@ -33,6 +33,13 @@ namespace vehiclesStoreAPI.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("GearBox")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Horsepower")
+                        .HasColumnType("integer");
+
                     b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasColumnType("text");
@@ -42,11 +49,15 @@ namespace vehiclesStoreAPI.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Make")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Price")
                         .HasColumnType("integer");

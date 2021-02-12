@@ -10,8 +10,8 @@ using vehiclesStoreAPI.DAO;
 namespace vehiclesStoreAPI.Migrations
 {
     [DbContext(typeof(VehiclesContext))]
-    [Migration("20210212153453_VehicleLocationAndImage")]
-    partial class VehicleLocationAndImage
+    [Migration("20210212201813_UpdatedVehiclesMigration")]
+    partial class UpdatedVehiclesMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,13 @@ namespace vehiclesStoreAPI.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("GearBox")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Horsepower")
+                        .HasColumnType("integer");
+
                     b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasColumnType("text");
@@ -44,11 +51,15 @@ namespace vehiclesStoreAPI.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Make")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Price")
                         .HasColumnType("integer");
