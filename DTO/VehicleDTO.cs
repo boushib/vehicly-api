@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json.Serialization;
 
 namespace vehiclesStoreAPI.DTO
@@ -29,5 +30,8 @@ namespace vehiclesStoreAPI.DTO
 
     [JsonPropertyName("price")]
     public int Price { get; set; }
+
+    [JsonPropertyName("created_at")]
+    public DateTime CreatedAt { get; set; }
   }
 }
