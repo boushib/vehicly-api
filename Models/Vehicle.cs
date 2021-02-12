@@ -19,6 +19,10 @@ namespace vehiclesStoreAPI.Models
     [Required]
     public int Price { get; set; }
     [Required]
+    public string ImageURL { get; set; }
+    [Required]
+    public string Location { get; set; }
+    [Required]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; set; }
   }
