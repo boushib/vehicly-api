@@ -39,6 +39,16 @@ namespace vehiclesStoreAPI
       services.AddDbContext<VehiclesContext>(options => options.UseNpgsql(connectionString));
       services.AddDbContext<UsersContext>(options => options.UseNpgsql(connectionString));
       services.AddControllers();
+      services.AddCors(options =>
+      {
+        options.AddDefaultPolicy(builder =>
+        {
+          builder
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+      });
       services.AddAuthentication(options =>
       {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -92,8 +102,8 @@ namespace vehiclesStoreAPI
       {
         app.UseHttpsRedirection();
       }
-
       app.UseRouting();
+      app.UseCors();
       app.UseAuthentication();
       app.UseAuthorization();
 
