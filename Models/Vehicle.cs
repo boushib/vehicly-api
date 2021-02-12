@@ -32,7 +32,7 @@ namespace vehiclesStoreAPI.Models
     public string Location { get; set; }
 
     [Required]
-    public int Phone { get; set; }
+    public string Phone { get; set; }
 
     [Required]
     public int Horsepower { get; set; }

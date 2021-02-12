@@ -32,7 +32,7 @@ namespace vehiclesStoreAPI.DTO
     public int Price { get; set; }
 
     [JsonPropertyName("phone")]
-    public int Phone { get; set; }
+    public string Phone { get; set; }
 
     [JsonPropertyName("hp")]
     public int Horsepower { get; set; }
