@@ -31,6 +31,15 @@ namespace vehiclesStoreAPI.DTO
     [JsonPropertyName("price")]
     public int Price { get; set; }
 
+    [JsonPropertyName("phone")]
+    public int Phone { get; set; }
+
+    [JsonPropertyName("hp")]
+    public int Horsepower { get; set; }
+
+    [JsonPropertyName("gear_box")]
+    public string GearBox { get; set; }
+
     [JsonPropertyName("created_at")]
     public DateTime CreatedAt { get; set; }
   }

@@ -32,6 +32,20 @@ namespace vehiclesStoreAPI.Models
     public string Location { get; set; }
 
     [Required]
+    public int Phone { get; set; }
+
+    [Required]
+    public int Horsepower { get; set; }
+
+    [Required]
+    public string GearBox { get; set; }
+
+    // TODO: add this later
+    // mileage -> int
+    // description: text
+    // username,
+
+    [Required]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public DateTime? UpdatedAt { get; set; }
