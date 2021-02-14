@@ -60,6 +60,18 @@ namespace vehiclesStoreAPI.Controllers
       return Ok(_mapper.Map<VehicleDTO>(vehicle));
     }
 
+    [HttpPut("{id}")]
+    [Authorize]
+    public ActionResult<VehicleDTO> UpdateVehicle(Guid id, Vehicle vehicle)
+    {
+      //var existingVehicle = _repository.GetVehicleById(id);
+      //if (existingVehicle == null) return NotFound();
+      vehicle.Id = id;
+      _repository.UpdateVehicle(vehicle);
+      _repository.SaveChanges();
+      return Ok(_mapper.Map<VehicleDTO>(vehicle));
+    }
+
     [HttpPost("upload")]
     [Authorize]
     public async Task<ActionResult> UploadFileToS3(IFormFile file)

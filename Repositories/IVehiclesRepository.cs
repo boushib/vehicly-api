@@ -13,6 +13,7 @@ namespace vehiclesStoreAPI.Repositories
     Vehicle GetVehicleById(Guid id);
     void DeleteVehicle(Vehicle vehicle);
     void AddVehicle(Vehicle vehicle);
+    void UpdateVehicle(Vehicle vehicle);
     Task<string> UploadFileToS3(IFormFile file);
     bool SaveChanges();
   }

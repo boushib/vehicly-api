@@ -41,6 +41,11 @@ namespace vehiclesStoreAPI.Repositories
       _context.Vehicles.Add(vehicle);
     }
 
+    public void UpdateVehicle(Vehicle vehicle)
+    {
+      _context.Vehicles.Update(vehicle);
+    }
+
     public bool SaveChanges()
     {
       return _context.SaveChanges() >= 0;
