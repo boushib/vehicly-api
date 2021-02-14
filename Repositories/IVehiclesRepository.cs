@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using vehiclesStoreAPI.Models;
 
 namespace vehiclesStoreAPI.Repositories
@@ -10,6 +12,7 @@ namespace vehiclesStoreAPI.Repositories
     IEnumerable<Vehicle> GetVehicles();
     Vehicle GetVehicleById(Guid id);
     void AddVehicle(Vehicle vehicle);
+    Task<string> UploadFileToS3(IFormFile file);
     bool SaveChanges();
   }
 }

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using vehiclesStoreAPI.DTO;
 using vehiclesStoreAPI.Models;
@@ -45,6 +47,15 @@ namespace vehiclesStoreAPI.Controllers
       _repository.SaveChanges();
       // TODO: return a 201 status code instead of 200
       return Ok(_mapper.Map<VehicleDTO>(vehicle));
+    }
+
+    [HttpPost("upload")]
+    [Authorize]
+    public async Task<ActionResult> UploadFileToS3(IFormFile file)
+    {
+      var fileURL = await _repository.UploadFileToS3(file);
+      //if (fileURL == null) return BadRequest();
+      return Ok(fileURL);
     }
   }
 }
