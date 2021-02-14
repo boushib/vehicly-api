@@ -9,6 +9,7 @@ Frontend: https://github.com/boushib/vehiclesStoreFrontend
 - **Frontend**: Vue.js, & Vuex.
 - **Backend**: Rest API in C# (.NET core).
 - **Database Engine**: PostgreSQL.
+- **File Storage**: AWS S3.
 
 ## Tools used during development
 
