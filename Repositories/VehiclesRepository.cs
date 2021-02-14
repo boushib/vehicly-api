@@ -25,6 +25,10 @@ namespace vehiclesStoreAPI.Repositories
     {
       return _context.Vehicles.FirstOrDefault(vehicle => vehicle.Id == id);
     }
+    public void DeleteVehicle(Vehicle vehicle)
+    {
+      _context.Vehicles.Remove(vehicle);
+    }
 
     public IEnumerable<Vehicle> GetVehicles()
     {

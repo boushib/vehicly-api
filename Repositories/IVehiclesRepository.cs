@@ -11,6 +11,7 @@ namespace vehiclesStoreAPI.Repositories
   {
     IEnumerable<Vehicle> GetVehicles();
     Vehicle GetVehicleById(Guid id);
+    void DeleteVehicle(Vehicle vehicle);
     void AddVehicle(Vehicle vehicle);
     Task<string> UploadFileToS3(IFormFile file);
     bool SaveChanges();

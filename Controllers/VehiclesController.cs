@@ -39,6 +39,17 @@ namespace vehiclesStoreAPI.Controllers
       return vehicle == null ? NotFound() : Ok(_mapper.Map<VehicleDTO>(vehicle));
     }
 
+    [HttpDelete("{id}")]
+    [Authorize]
+    public ActionResult DeleteVehicle(Guid id)
+    {
+      var vehicle = _repository.GetVehicleById(id);
+      if (vehicle == null) return NotFound();
+      _repository.DeleteVehicle(vehicle);
+      _repository.SaveChanges();
+      return Ok(_mapper.Map<VehicleDTO>(vehicle));
+    }
+
     [HttpPost]
     [Authorize]
     public ActionResult<VehicleDTO> AddVehicle(Vehicle vehicle)
