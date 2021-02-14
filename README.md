@@ -2,7 +2,7 @@
 
 A vehicles online store project, for the **Web Services** class in my master degree at High Tech Rabat.
 
-Frontend: https://github.com/boushib/vehiclesStoreFrontend
+Frontend: <https://github.com/boushib/vehiclesStoreFrontend>
 
 ## Stack to be used in the project
 
