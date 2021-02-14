@@ -43,6 +43,7 @@ namespace vehiclesStoreAPI.Repositories
 
     public void UpdateVehicle(Vehicle vehicle)
     {
+      vehicle.UpdatedAt = DateTime.UtcNow;
       _context.Vehicles.Update(vehicle);
     }
 

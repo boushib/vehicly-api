@@ -42,5 +42,6 @@ namespace vehiclesStoreAPI.DTO
 
     [JsonPropertyName("created_at")]
     public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
   }
 }
