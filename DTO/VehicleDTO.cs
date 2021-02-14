@@ -19,7 +19,7 @@ namespace vehiclesStoreAPI.DTO
     [JsonPropertyName("fuel")]
     public string Fuel { get; set; }
 
-    [JsonPropertyName("image_url")]
+    [JsonPropertyName("imageURL")]
     public string ImageURL { get; set; }
 
     [JsonPropertyName("location")]
@@ -34,14 +34,16 @@ namespace vehiclesStoreAPI.DTO
     [JsonPropertyName("phone")]
     public string Phone { get; set; }
 
-    [JsonPropertyName("hp")]
+    [JsonPropertyName("horsepower")]
     public int Horsepower { get; set; }
 
-    [JsonPropertyName("gear_box")]
+    [JsonPropertyName("gearBox")]
     public string GearBox { get; set; }
 
-    [JsonPropertyName("created_at")]
+    [JsonPropertyName("createdAt")]
     public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
+
+    [JsonPropertyName("updatedAt")]
+    public DateTime? UpdatedAt { get; set; }
   }
 }
