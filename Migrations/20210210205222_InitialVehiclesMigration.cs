@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace vehiclesStoreAPI.Migrations
+namespace vehicly.Migrations
 {
     public partial class InitialVehiclesMigration : Migration
     {

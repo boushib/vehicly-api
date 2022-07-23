@@ -1,11 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 
-namespace vehiclesStoreAPI.Models
+namespace vehicly.Models;
+
+public class FileUploadForm
 {
-  public class FileUploadForm
-  {
-    [Required]
-    public IFormFile File { get; set; }
-  }
+  [Required] public IFormFile File { get; set; }
 }

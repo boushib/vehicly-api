@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using vehiclesStoreAPI.DAO;
+using vehicly.DAO;
 
-namespace vehiclesStoreAPI.Migrations.Users
+namespace vehicly.Migrations.Users
 {
     [DbContext(typeof(UsersContext))]
     [Migration("20210212201842_UsersMigration")]
@@ -23,7 +23,7 @@ namespace vehiclesStoreAPI.Migrations.Users
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("vehiclesStoreAPI.Models.User", b =>
+            modelBuilder.Entity("vehicly.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

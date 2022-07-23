@@ -1,15 +1,13 @@
-
 using AutoMapper;
-using vehiclesStoreAPI.Models;
-using vehiclesStoreAPI.DTO;
+using vehicly.DTO;
+using vehicly.Models;
 
-namespace vehiclesStoreAPI.Profiles
+namespace vehicly.Profiles;
+
+public class UsersProfile : Profile
 {
-  public class UsersProfile : Profile
+  public UsersProfile()
   {
-    public UsersProfile()
-    {
-      CreateMap<User, UserDTO>();
-    }
+    CreateMap<User, UserDTO>();
   }
 }

@@ -1,9 +1,8 @@
 using Microsoft.Extensions.Configuration;
 
-namespace vehiclesStoreAPI
+namespace vehicly;
+
+public static class AppData
 {
-  public static class AppData
-  {
-    public static IConfiguration Configuration;
-  }
+  public static IConfiguration Configuration;
 }
