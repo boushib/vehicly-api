@@ -1,6 +1,6 @@
-# vehiclesStoreAPI
+# Vehicly
 
-A vehicles online store project, for the **Web Services** class in my master degree at High Tech Rabat.
+This is the backend Rest API for _Vehicly_, a vehicles online store.
 
 Frontend: <https://github.com/boushib/vehiclesStoreFrontend>
 
@@ -20,23 +20,19 @@ Frontend: <https://github.com/boushib/vehiclesStoreFrontend>
 
 ## Run dev environment
 
-Insall PostgreSQL.
-
-In my case I'm creating a docker postgres image.
-
 First let's pull the postgres image:
 
-```bash
+```text
 docker pull postgres
 ```
 
-Then, let's start a postgres instance:
+Then, start a postgres instance:
 
-```bash
+```text
 docker run --name postgres -e POSTGRES_PASSWORD=123456 -d -p 5432:5432 postgres
 ```
 
-Now, it's time to start our postgres container:
+Now, it's time to start a postgres container:
 
 ```bash
 docker start postgres
@@ -66,13 +62,13 @@ Ref: <https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=asp
 }
 ```
 
-If you don't have Entity Framework installed you may need to run:
+Install Entity Framework:
 
 ```bash
 dotnet tool install --global dotnet-ef
 ```
 
-Then update the database:
+Update the database:
 
 ```bash
 dotnet ef database update --context UsersContext
